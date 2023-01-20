@@ -1,0 +1,31 @@
+@import url("https://css.gg/arrow-left.css");
+@import url("https://css.gg/arrow-right.css");
+
+.button {
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 0.7rem;
+  width: 10rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.nextStepBtn {
+  color: #fff;
+  background: #f67599;
+}
+
+.nextStepBtn:hover {
+  color: black;
+  background: transparent;
+}
+
+.prevStepBtn:hover {
+  color: #fff;
+  background: lightgrey;
+}

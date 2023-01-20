@@ -1,0 +1,9 @@
+.formControl hr {
+  margin: 3.5rem auto 2.5rem;
+  border: 1px solid #e6e6eb;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
+}

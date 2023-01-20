@@ -1,0 +1,81 @@
+:root {
+  --size: clamp(1.5rem, 5vw, 3rem);
+  --spacing: clamp(0.25rem, 2vw, 0.5rem);
+}
+
+.stepper__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+  color: lightgrey;
+}
+
+.stepper__item:not(:last-child) {
+  flex: 1;
+}
+
+.stepper__step {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  z-index: 10;
+  color: transparent;
+}
+
+.stepper__step.inactive,
+.stepper__title.inactive {
+  color: lightgrey;
+  border-color: lightgrey;
+}
+
+.stepper__step.active,
+.stepper__title.active {
+  color: black;
+  border-color: black;
+}
+
+.stepper__title.done {
+  color: black;
+}
+
+.stepper__step.done::before {
+  content: "";
+  width: 20px;
+  height: 10px;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -60%) rotate(-45deg);
+  transform-origin: center center;
+}
+
+.stepper__step.done::after {
+  content: "";
+  height: 40px;
+  width: 40px;
+  background: black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -10;
+}
+
+.stepper__item:not(:last-child)::after {
+  content: "";
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background-color: #e0e0e0;
+  margin-right: 1.5rem;
+}

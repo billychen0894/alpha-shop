@@ -1,0 +1,10 @@
+.stepper h2 {
+  font-size: 2rem;
+}
+
+.stepper ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  position: relative;
+}

@@ -1,0 +1,35 @@
+.formControl > div {
+  display: flex;
+  border-radius: 4px;
+  border: 1px solid #f0f0f5;
+  font: inherit;
+  max-width: 70%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formControl label {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.formControl input {
+  position: relative;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.formItemTitle {
+  font-weight: 700;
+}
+
+.formItemDescription {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+}
+
+.formControl > div:hover {
+  border-color: #2a2a2a;
+}

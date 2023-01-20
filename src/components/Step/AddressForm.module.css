@@ -1,0 +1,70 @@
+.formControl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "title name name name"
+    "phone phone email email"
+    "city address address address";
+  grid-gap: 1rem 2rem;
+  align-items: center;
+  align-content: start;
+}
+
+.title {
+  grid-area: title;
+}
+
+.name {
+  grid-area: name;
+}
+
+.phone {
+  grid-area: phone;
+}
+
+.email {
+  grid-area: email;
+}
+
+.city {
+  grid: city;
+}
+
+.address {
+  grid-column: 2/-1;
+  grid-row: 3;
+  grid: address;
+}
+
+.address input {
+  width: auto;
+}
+
+.input label {
+  display: block;
+}
+
+.input input {
+  display: block;
+}
+
+.input label {
+  display: block;
+  font-weight: 700;
+  color: #808080;
+  margin-bottom: 0.5rem;
+}
+
+.input input,
+.input select {
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #4a4a4a;
+  font: inherit;
+  width: 100%;
+  padding: 1rem;
+}
+
+.input select {
+  background: transparent;
+}
