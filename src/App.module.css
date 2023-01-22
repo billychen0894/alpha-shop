@@ -1,0 +1,19 @@
+.mainContent {
+  margin-top: 80px;
+  background-color: inherit;
+}
+
+.mainContainer {
+  display: flex;
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainContainer > div {
+  width: 50%;
+  margin-right: 5rem;
+}

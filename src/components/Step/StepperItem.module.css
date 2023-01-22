@@ -1,5 +1,4 @@
 :root {
-  --size: clamp(1.5rem, 5vw, 3rem);
   --spacing: clamp(0.25rem, 2vw, 0.5rem);
 }
 
@@ -15,40 +14,25 @@
 }
 
 .stepper__step {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 500;
   margin: 0 auto;
   position: relative;
   border-radius: 50%;
-  border: 2px solid lightgrey;
+  border: 1px solid lightgrey;
   z-index: 10;
   color: transparent;
+  font-size: 0.85rem;
 }
 
-.stepper__step.inactive,
-.stepper__title.inactive {
-  color: lightgrey;
-  border-color: lightgrey;
-}
-
-.stepper__step.active,
-.stepper__title.active {
-  color: black;
-  border-color: black;
-}
-
-.stepper__title.done {
-  color: black;
-}
-
-.stepper__step.done::before {
+.stepper__item.done .stepper__step::before {
   content: "";
-  width: 20px;
-  height: 10px;
+  width: 10px;
+  height: 5px;
   border-left: 3px solid #fff;
   border-bottom: 3px solid #fff;
   position: absolute;
@@ -58,10 +42,10 @@
   transform-origin: center center;
 }
 
-.stepper__step.done::after {
+.stepper__item.done .stepper__step::after {
   content: "";
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   background: black;
   position: absolute;
   left: 50%;
@@ -78,4 +62,24 @@
   height: 2px;
   background-color: #e0e0e0;
   margin-right: 1.5rem;
+}
+
+.stepper__item.done::after {
+  background-color: black;
+}
+
+.stepper__item.inactive .stepper__step,
+.stepper__item.inactive .stepper__title {
+  color: lightgrey;
+  border-color: lightgrey;
+}
+
+.stepper__item.active .stepper__step,
+.stepper__item.active .stepper__title {
+  color: black;
+  border-color: black;
+}
+
+.stepper__item.done .stepper__title {
+  color: black;
 }
