@@ -18,6 +18,7 @@
 .nextStepBtn {
   color: #fff;
   background: #f67599;
+  margin-left: auto;
 }
 
 .nextStepBtn:hover {

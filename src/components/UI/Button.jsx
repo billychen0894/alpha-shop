@@ -1,6 +1,6 @@
 import classes from "./Button.module.css";
 
-function Button({ children, type, className }) {
+function Button({ children, type, className, onClick }) {
   const classPrevStepBtn =
     className === "nextStepBtn" ? classes.nextStepBtn : "";
   const classNextStepBtn =
@@ -9,6 +9,7 @@ function Button({ children, type, className }) {
   return (
     <button
       type={type}
+      onClick={onClick}
       className={`${classes.button} ${classPrevStepBtn} ${classNextStepBtn}`}
     >
       {children}

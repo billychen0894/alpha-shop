@@ -1,4 +1,4 @@
-export function MinusIcon() {
+export function MinusIcon({ onRemoveClick }) {
   return (
     <svg
       width="27"
@@ -6,6 +6,7 @@ export function MinusIcon() {
       viewBox="0 0 27 27"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={onRemoveClick}
     >
       <path
         fillRule="evenodd"
@@ -26,7 +27,7 @@ export function MinusIcon() {
   );
 }
 
-export function PlusIcon() {
+export function PlusIcon({ onAddClick }) {
   return (
     <svg
       width="27"
@@ -34,6 +35,7 @@ export function PlusIcon() {
       viewBox="0 0 27 27"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={onAddClick}
     >
       <path
         fillRule="evenodd"

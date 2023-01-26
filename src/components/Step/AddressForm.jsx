@@ -17,7 +17,7 @@ const cityDropdownOptions = [
 ];
 
 function AddressForm() {
-  // TODO: for title & address input values will be handled by using useState hook
+  // TODO: for title & city input values will be handled by using useState hook
   const nameInputRef = useRef();
   const phoneInputRef = useRef();
   const emailInputRef = useRef();
@@ -38,7 +38,7 @@ function AddressForm() {
   };
 
   return (
-    <>
+    <div className={classes.formWarpper}>
       <h2>寄送地址</h2>
       <div className={classes.formControl}>
         <Dropdown
@@ -96,7 +96,7 @@ function AddressForm() {
           }}
         />
       </div>
-    </>
+    </div>
   );
 }
 

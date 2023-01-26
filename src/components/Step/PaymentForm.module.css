@@ -1,8 +1,12 @@
+.wrapper {
+  height: 40vh;
+}
+
 .input {
   margin-bottom: 1.5rem;
 }
 
-h2.input {
+.input h2 {
   font-size: 1.5rem;
 }
 
@@ -18,16 +22,18 @@ h2.input {
   border-radius: 4px;
   border: 1px solid #4a4a4a;
   font: inherit;
-  width: 100%;
+  width: 65%;
   height: 2rem;
   padding: 1rem;
   text-align: left;
 }
 
-div:nth-last-child(-n + 2).input {
+.input div:nth-last-child(-n + 2) {
+  width: 50%;
   display: inline-block;
 }
 
-div:nth-last-child(-2n + 2).input {
-  margin-right: 2rem;
+.input div:nth-last-child(-n + 2) input {
+  width: 95%;
+  display: inline-block;
 }

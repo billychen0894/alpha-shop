@@ -9,8 +9,8 @@ function PaymentForm() {
   const cvcInput = useRef();
 
   return (
-    <>
-      <h2 className={classes.input}>付款資訊</h2>
+    <div className={`${classes.input} ${classes.wrapper}`}>
+      <h2>付款資訊</h2>
       <Input
         ref={cardholderNameInput}
         className={classes.input}
@@ -51,7 +51,7 @@ function PaymentForm() {
           placeholder: "123",
         }}
       />
-    </>
+    </div>
   );
 }
 

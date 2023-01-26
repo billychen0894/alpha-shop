@@ -1,3 +1,6 @@
+.formControl {
+  height: 40vh;
+}
 .formControl > div {
   display: flex;
   border-radius: 4px;

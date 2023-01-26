@@ -1,7 +1,7 @@
 import StepperItem from "./StepperItem";
 import classes from "./StepProgress.module.css";
 
-function StepProgress() {
+function StepProgress({ stepControl }) {
   return (
     <div className={classes.stepper}>
       <h2>結帳</h2>
@@ -9,19 +9,21 @@ function StepProgress() {
         <StepperItem
           stepperTitle="寄送地址"
           step="1"
-          active={false}
-          done={true}
+          active={stepControl === "step1" ? true : false}
+          done={
+            stepControl === "step2" || stepControl === "step3" ? true : false
+          }
         />
         <StepperItem
           stepperTitle="運送方式"
           step="2"
-          active={true}
-          done={false}
+          active={stepControl === "step2" ? true : false}
+          done={stepControl === "step3" ? true : false}
         />
         <StepperItem
           stepperTitle="付款資訊"
           step="3"
-          active={false}
+          active={stepControl === "step3" ? true : false}
           done={false}
         />
       </ul>
