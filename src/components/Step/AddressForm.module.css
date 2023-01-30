@@ -1,5 +1,5 @@
-.formWarpper {
-  height: 40vh;
+.formWrapper {
+  height: 500px;
 }
 .formControl {
   display: grid;
@@ -70,4 +70,14 @@
 
 .input select {
   background: transparent;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formWrapper hr {
+  margin: 3.5rem auto 2.5rem;
+  border: 1px solid #e6e6eb;
 }

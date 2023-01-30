@@ -1,5 +1,5 @@
 .wrapper {
-  height: 40vh;
+  height: 500px;
 }
 
 .input {
@@ -28,12 +28,22 @@
   text-align: left;
 }
 
-.input div:nth-last-child(-n + 2) {
+.input div:nth-last-child(-n + 4) {
   width: 50%;
   display: inline-block;
 }
 
-.input div:nth-last-child(-n + 2) input {
+.input div:nth-last-child(-n + 4) input {
   width: 95%;
   display: inline-block;
+}
+
+.input hr {
+  margin: 3.5rem auto 2.5rem;
+  border: 1px solid #e6e6eb;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
 }

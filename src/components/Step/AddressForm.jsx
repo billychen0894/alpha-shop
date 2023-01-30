@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import classes from "./AddressForm.module.css";
 import Input from "../UI/Input";
 import Dropdown from "../UI/Dropdown";
+import Button from "../UI/Button";
 
 const titleDropdownOptions = [
   { label: "請輸入稱謂", value: "", disabled: true },
@@ -16,29 +17,21 @@ const cityDropdownOptions = [
   { label: "高雄市", value: "高雄市" },
 ];
 
-function AddressForm() {
+function AddressForm({ onToNextStep, formData, setFormData }) {
   // TODO: for title & city input values will be handled by using useState hook
-  const nameInputRef = useRef();
-  const phoneInputRef = useRef();
-  const emailInputRef = useRef();
-  const addressInputRef = useRef();
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
 
   const titleChangeHandler = (e) => {
-    console.log(e.target.value);
-
     setSelectedTitle(e.target.value);
   };
 
   const cityChangeHandler = (e) => {
-    console.log(e.target.value);
-
     setSelectedCity(e.target.value);
   };
 
   return (
-    <div className={classes.formWarpper}>
+    <form className={classes.formWrapper}>
       <h2>寄送地址</h2>
       <div className={classes.formControl}>
         <Dropdown
@@ -49,7 +42,6 @@ function AddressForm() {
           onChange={titleChangeHandler}
         />
         <Input
-          ref={nameInputRef}
           className={`${classes.input} ${classes.name}`}
           label="姓名"
           input={{
@@ -57,9 +49,15 @@ function AddressForm() {
             type: "text",
             placeholder: "請輸入姓名",
           }}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              address: { ...formData.address, name: e.target.value },
+            });
+          }}
+          value={formData.address.name}
         />
         <Input
-          ref={phoneInputRef}
           className={`${classes.input} ${classes.phone}`}
           label="電話"
           input={{
@@ -67,9 +65,15 @@ function AddressForm() {
             type: "text",
             placeholder: "請輸入電話",
           }}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              address: { ...formData.address, phone: e.target.value },
+            });
+          }}
+          value={formData.address.phone}
         />
         <Input
-          ref={emailInputRef}
           className={`${classes.input} ${classes.email}`}
           label="Email"
           input={{
@@ -77,6 +81,13 @@ function AddressForm() {
             type: "email",
             placeholder: "請輸入電子郵件",
           }}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              address: { ...formData.address, email: e.target.value },
+            });
+          }}
+          value={formData.address.email}
         />
         <Dropdown
           label="縣市"
@@ -86,7 +97,6 @@ function AddressForm() {
           onChange={cityChangeHandler}
         />
         <Input
-          ref={addressInputRef}
           className={`${classes.input} ${classes.address}`}
           label="地址"
           input={{
@@ -94,9 +104,23 @@ function AddressForm() {
             type: "text",
             placeholder: "請輸入地址",
           }}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              address: { ...formData.address, address: e.target.value },
+            });
+          }}
+          value={formData.address.address}
         />
       </div>
-    </div>
+      <hr />
+      <div className={classes.btnWrapper}>
+        <Button className="nextStepBtn" type="button" onClick={onToNextStep}>
+          下一步
+          <i className="gg-arrow-right"></i>
+        </Button>
+      </div>
+    </form>
   );
 }
 

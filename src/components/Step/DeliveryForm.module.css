@@ -1,7 +1,7 @@
 .formControl {
-  height: 40vh;
+  height: 500px;
 }
-.formControl > div {
+.formControl > .inputSelection {
   display: flex;
   border-radius: 4px;
   border: 1px solid #f0f0f5;
@@ -35,4 +35,14 @@
 
 .formControl > div:hover {
   border-color: #2a2a2a;
+}
+
+.formControl hr {
+  margin: 8.3rem auto 2.5rem;
+  border: 1px solid #e6e6eb;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
 }

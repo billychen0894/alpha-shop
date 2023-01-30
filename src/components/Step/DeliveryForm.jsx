@@ -1,24 +1,26 @@
-import { useState } from "react";
 import classes from "./DeliveryForm.module.css";
+import Button from "../UI/Button";
 
-function DeliveryForm() {
-  const [shippingMethod, setShippingMethod] = useState("");
-
-  const shippingMethodChangeHandler = (event) => {
-    setShippingMethod(event.target.value);
-  };
-
+function DeliveryForm({ onToPrevStep, onToNextStep, formData, setFormData }) {
   return (
-    <div className={classes.formControl}>
+    <form className={classes.formControl}>
       <h2>運送方式</h2>
-      <div>
+      <div className={classes.inputSelection}>
         <input
           type="radio"
           id="standardShipping"
           name="deliveryMethod"
           value="standardShipping"
-          checked={shippingMethod === "standardShipping"}
-          onChange={shippingMethodChangeHandler}
+          checked={formData.delivery.shippingMethod === "standardShipping"}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              delivery: {
+                ...formData.delivery,
+                shippingMethod: e.target.value,
+              },
+            });
+          }}
         />
         <label htmlFor="standardShipping">
           <div>
@@ -28,14 +30,22 @@ function DeliveryForm() {
           <div>免費</div>
         </label>
       </div>
-      <div>
+      <div className={classes.inputSelection}>
         <input
           type="radio"
           id="dhlShipping"
           name="deliveryMethod"
           value="dhlShipping"
-          checked={shippingMethod === "dhlShipping"}
-          onChange={shippingMethodChangeHandler}
+          checked={formData.delivery.shippingMethod === "dhlShipping"}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              delivery: {
+                ...formData.delivery,
+                shippingMethod: e.target.value,
+              },
+            });
+          }}
         />
         <label htmlFor="dhlShipping">
           <div>
@@ -45,7 +55,18 @@ function DeliveryForm() {
           <div>$500</div>
         </label>
       </div>
-    </div>
+      <hr />
+      <div className={classes.btnWrapper}>
+        <Button className="prevStepBtn" type="button" onClick={onToPrevStep}>
+          <i className="gg-arrow-left"></i>
+          上一步
+        </Button>
+        <Button className="nextStepBtn" type="button" onClick={onToNextStep}>
+          下一步
+          <i className="gg-arrow-right"></i>
+        </Button>
+      </div>
+    </form>
   );
 }
 

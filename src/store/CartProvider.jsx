@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import CartContext from "./cart-context";
+import CartContext from "./CartContext";
 
 const skinnyJeanId = crypto.randomUUID();
 const slimJeanId = crypto.randomUUID();
@@ -26,59 +26,62 @@ const initialCartState = {
 };
 
 const cartReducer = (state, action) => {
-  if (action.type === "ADD") {
-    let updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.count;
+  switch (action.type) {
+    case "ADD": {
+      let updatedTotalAmount = state.totalAmount + action.item.price;
 
-    const prevItemIndex = state.items.findIndex(
-      (item) => item.id === action.item.id
-    );
-    const prevItem = state.items[prevItemIndex];
+      const prevItemIndex = state.items.findIndex(
+        (item) => item.id === action.item.id
+      );
+      const prevItem = state.items[prevItemIndex];
 
-    let updatedItems;
+      let updatedItems;
 
-    if (prevItem) {
-      const nextItem = {
-        ...prevItem,
-        count: prevItem.count + action.item.count,
+      if (prevItem) {
+        const nextItem = {
+          ...prevItem,
+          count: prevItem.count + 1,
+        };
+        updatedItems = [...state.items];
+        updatedItems[prevItemIndex] = nextItem;
+      } else {
+        updatedItems = state.items.concat(action.item);
+      }
+
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
       };
-      updatedItems = [...state.items];
-      updatedItems[prevItemIndex] = nextItem;
-    } else {
-      updatedItems = state.items.concat(action.item);
     }
+    case "REMOVE": {
+      const prevItemIndex = state.items.findIndex(
+        (item) => item.id === action.id
+      );
+      const prevItem = state.items[prevItemIndex];
 
-    return {
-      items: updatedItems,
-      totalAmount: updatedTotalAmount,
-    };
-  }
+      let updatedTotalAmount = state.totalAmount - prevItem.price;
 
-  if (action.type === "REMOVE") {
-    const prevItemIndex = state.items.findIndex(
-      (item) => item.id === action.id
-    );
-    const prevItem = state.items[prevItemIndex];
+      let updatedItems;
 
-    let updatedTotalAmount = state.totalAmount - prevItem.price;
+      if (prevItem.count === 1) {
+        updatedItems = state.items.filter((item) => item.id !== action.id);
+      } else {
+        const nextItem = {
+          ...prevItem,
+          count: prevItem.count - 1,
+        };
+        updatedItems = [...state.items];
+        updatedItems[prevItemIndex] = nextItem;
+      }
 
-    let updatedItems;
-
-    if (prevItem.count === 1) {
-      updatedItems = state.items.filter((item) => item.id !== action.id);
-    } else {
-      const nextItem = {
-        ...prevItem,
-        count: prevItem.count - 1,
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
       };
-      updatedItems = [...state.items];
-      updatedItems[prevItemIndex] = nextItem;
     }
-
-    return {
-      items: updatedItems,
-      totalAmount: updatedTotalAmount,
-    };
+    default: {
+      throw Error("Unknown action" + action.type);
+    }
   }
 };
 

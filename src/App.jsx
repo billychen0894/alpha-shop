@@ -4,6 +4,7 @@ import StepProgress from "./components/Step/StepProgress";
 import classes from "./App.module.css";
 import { useState } from "react";
 import CartProvider from "./store/CartProvider";
+import UserInputProvider from "./store/UserInputProvider";
 
 function App() {
   const [currStep, setCurrStep] = useState("step1");
@@ -30,26 +31,27 @@ function App() {
         setCurrStep("step3");
         break;
       default:
-        setCurrStep("step1");
         break;
     }
   };
 
   return (
     <CartProvider>
-      <main className={classes.mainContent}>
-        <div className={classes.mainContainer}>
-          <div>
-            <StepProgress stepControl={currStep} />
-            <StepperForm
-              stepControl={currStep}
-              onToPrevStep={handlePrevStepChange}
-              onToNextStep={handleNextStepChange}
-            />
+      <UserInputProvider>
+        <main className={classes.mainContent}>
+          <div className={classes.mainContainer}>
+            <div>
+              <StepProgress stepControl={currStep} />
+              <StepperForm
+                stepControl={currStep}
+                onToPrevStep={handlePrevStepChange}
+                onToNextStep={handleNextStepChange}
+              />
+            </div>
+            <Cart />
           </div>
-          <Cart />
-        </div>
-      </main>
+        </main>
+      </UserInputProvider>
     </CartProvider>
   );
 }

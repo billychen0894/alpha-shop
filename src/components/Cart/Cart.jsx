@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import CartItems from "./CartItems";
 import classes from "./Cart.module.css";
-import CartContext from "../../store/cart-context";
+import CartContext from "../../store/CartContext";
 
 const formattingOptions = {
   style: "currency",
